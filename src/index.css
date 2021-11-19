@@ -45,3 +45,25 @@ body {
   height: 250px;
   width: 200px;
 }
+
+.navbar{
+  width: 80%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.navbar a {
+  color: #617d98;
+  font-size: 20px;
+  text-decoration: none;
+}
+.navbar input{
+  border: 0px ;
+  border-radius: 18px;
+  height: 30px;
+}
+.navbar input::placeholder{
+  margin-left: 15px;
+}
