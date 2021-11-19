@@ -5,7 +5,7 @@ import "./index.css"
 
 import SpecificBook from "./Candidate";
 
-
+import Navbar from "./Navbar";
 
 function CandidateList() {
   const [users, setUser] = useState([]);
@@ -20,14 +20,23 @@ function CandidateList() {
     });
   }, []);
   console.warn(users);
-  
+  const [searchTerm,setSearchTerm] = useState('')
   return (
-    <section className="candidatelist">
-      {users.map((book, index) => {
-        return <SpecificBook key={book.id} {...book}></SpecificBook>;
-      })}
-      {console.log(users)}
-    </section>
+    <div>
+      <input type="text" placeholder="Search..." onChange={event =>{setSearchTerm(event.target.value)} }/>
+      <section className="candidatelist">
+        {users.filter((book)=>{
+          if(searchTerm == ""){
+            return book
+          }else if(book.name.toLowerCase().includes(searchTerm.toLowerCase())){
+            return book
+          }
+        }).map((book, index) => {
+          return <SpecificBook key={book.id} {...book}></SpecificBook>;
+        })}
+        {console.log(users)}
+      </section>
+    </div>
   );
 }
 ReactDom.render(<CandidateList />, document.getElementById('root'))
